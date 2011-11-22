@@ -1,0 +1,2532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>JSDoc: Class: BufferBuilder</title>
+	
+	<script src="http://shjs.sourceforge.net/sh_main.min.js"> </script>
+    <script src="http://shjs.sourceforge.net/lang/sh_javascript.min.js"> </script>
+    
+    <link type="text/css" rel="stylesheet" href="styles/node-dark.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Class: BufferBuilder</h1>
+    
+    
+    
+    <section>
+     
+    <header>
+        <h2>BufferBuilder</h2>
+        
+    </header>  
+    
+    <article>
+        <div class="container-overview">
+        <dt>
+    <h4 class="name" id="BufferBuilder"><span class="type-signature"></span>new BufferBuilder<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>A builder of dynamically sized <code>Buffer</code>s.</p>
+    </p>
+    
+    
+    
+    
+    
+    
+    <dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>length</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A number of pushed bytes.</td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferBuilder.js, line 20</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var builder = new BufferBuilder();
+
+builder
+  .pushByte(0x01)
+  .pushUInt16(12)
+  .pushString('Hello World!');
+
+var buffer = builder.toBuffer();
+
+console.log(buffer);</code></pre>
+
+
+</dd>
+
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+            
+            <h3 class="subsection-title">Methods</h3>
+            
+            <dl><dt>
+    <h4 class="name" id="pushBits"><span class="type-signature"></span>pushBits<span class="signature">(bitsArray)</span><span class="type-signature"> &rarr; {<a href="BufferBuilder.html">BufferBuilder</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Appends the specified bits to this builder.</p>
+
+<p>A number of bytes corresponding to the following formula will be appended
+to the builder:</p>
+
+<pre><code>var byteCount = Math.ceil(bitsArray.length / 8);</code></pre>
+
+<p>If the number of bits is not a multiple of 8, then the remaining bits will
+be set to <code>0</code>.</p>
+
+<p>Each 8 values from the array correspond to the 8 bits being appended to the
+buffer as bytes. First value of the each octet is the least significant bit,
+last value - the most significant bit.</p>
+
+<p>Truthy values become 1's and falsy values become 0's.</p>
+
+<p>For example, pushing the following array of 11 values:
+<code>
+    [0, 1, 1, 0, 0, 1, 1, 1,
+                    0, 1, 1]
+</code>
+will result in 2 bytes being appended to the builder:
+<code>0xE6</code>, because its bit representation is <code>11100110</code> and
+<code>0x06</code>, because its bit representation is <code>00000011</code>.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>bitsArray</code></td>
+            
+            
+            <td class="type">
+            Array.&lt;Boolean>
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">An array of truthy and falsy values.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferBuilder.js, line 80</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    Self.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">BufferBuilder</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified argument is not an array.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>builder.pushBits([0, 0, 0, 0, 1, 1, 0, 1, 0, 1])
+builder.pushBits((0xABCD).toString(2).split('').map(Number))</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="pushBuffer"><span class="type-signature"></span>pushBuffer<span class="signature">(sourceBuffer)</span><span class="type-signature"> &rarr; {<a href="BufferBuilder.html">BufferBuilder</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Appends bytes from the specified source Buffer to this builder.</p>
+
+<p>Increases the length of the builder by the specified source buffer.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>sourceBuffer</code></td>
+            
+            
+            <td class="type">
+            Buffer
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferBuilder.js, line 237</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">BufferBuilder</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified argument is not an instance of Buffer.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>builder.pushBuffer(new Buffer([0, 1, 2]));
+builder.pushBuffer(new Buffer('Hello!'));</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="pushByte"><span class="type-signature"></span>pushByte<span class="signature">(byteValue)</span><span class="type-signature"> &rarr; {<a href="BufferBuilder.html">BufferBuilder</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Appends the specified byte to this builder.</p>
+
+<p>Increases the length of the builder by 1.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>byteValue</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A number between 0 and 255.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferBuilder.js, line 139</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    Self.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">BufferBuilder</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified argument is not a number between 0 and 255.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>builder.pushByte(0xFE);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="pushBytes"><span class="type-signature"></span>pushBytes<span class="signature">(bytesArray)</span><span class="type-signature"> &rarr; {<a href="BufferBuilder.html">BufferBuilder</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Appends the specified bytes to this builder.</p>
+
+<p>Increases the length of the builder by the length of the specified array.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>bytesArray</code></td>
+            
+            
+            <td class="type">
+            Array.&lt;Number>
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">An array of numbers between 0 and 255.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferBuilder.js, line 196</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    Self.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">BufferBuilder</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified argument is not an array.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>builder.pushBytes([0x00, 0x01, 0xAB, 0xCD]);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="pushChar"><span class="type-signature"></span>pushChar<span class="signature">(charValue)</span><span class="type-signature"> &rarr; {<a href="BufferBuilder.html">BufferBuilder</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Appends the specified ASCII character to this builder.</p>
+
+<p>Increases the length of the builder by 1.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>charValue</code></td>
+            
+            
+            <td class="type">
+            String
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">An ASCII character.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferBuilder.js, line 173</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    Self.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">BufferBuilder</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    <ul><li>
+<div class="param-desc">
+    If no char value was specified.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">ReferenceError</span> 
+		
+	</dd>
+</dl>
+</li><li>
+<div class="param-desc">
+    If the specified argument is not a string.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">TypeError</span> 
+		
+	</dd>
+</dl>
+</li><li>
+<div class="param-desc">
+    If the specified argument is not an ASCII character.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+</li></ul>
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>builder.pushChar('!');</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="pushDouble"><span class="type-signature"></span>pushDouble<span class="signature">(numberValue, littleEndian)</span><span class="type-signature"> &rarr; {<a href="BufferBuilder.html">BufferBuilder</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Appends the specified number as a signed 64 bit floating-point number
+defined in IEEE 754.</p>
+
+<p>Increases the length of the builder by 8.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>numberValue</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A number between -1.7976931348623157e+308 and 1.7976931348623157e+308.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>littleEndian</code></td>
+            
+            
+            <td class="type">
+            Boolean=false
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">TRUE for little endian byte order; FALSE for big endian. Defaults to FALSE.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferBuilder.js, line 546</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    Self.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">BufferBuilder</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified value is not a double.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>builder.pushDouble(12345.6789);
+builder.pushDouble(-12345.99999);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="pushFloat"><span class="type-signature"></span>pushFloat<span class="signature">(numberValue, littleEndian)</span><span class="type-signature"> &rarr; {<a href="BufferBuilder.html">BufferBuilder</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Appends the specified number as a signed 32 bit floating-point number
+defined in IEEE 754.</p>
+
+<p>Increases the length of the builder by 4.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>numberValue</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A number between -3.4028234663852886e+38 and 3.4028234663852886e+38.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>littleEndian</code></td>
+            
+            
+            <td class="type">
+            Boolean=false
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">TRUE for little endian byte order; FALSE for big endian. Defaults to FALSE.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferBuilder.js, line 512</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    Self.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">BufferBuilder</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified value is not a float.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>builder.pushFloat(123.456);
+builder.pushFloat(-123.456);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="pushInt16"><span class="type-signature"></span>pushInt16<span class="signature">(numberValue, littleEndian)</span><span class="type-signature"> &rarr; {<a href="BufferBuilder.html">BufferBuilder</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Appends the specified number as a signed 16-bit integer to this builder.</p>
+
+<p>Increases the length of the builder by 2.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>numberValue</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A number between -32768 and 32767.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>littleEndian</code></td>
+            
+            
+            <td class="type">
+            Boolean=false
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">TRUE for little endian byte order; FALSE for big endian. Defaults to FALSE.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferBuilder.js, line 359</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    Self.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">BufferBuilder</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified value is not a 16-bit signed integer.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>builder.pushInt16(12345);
+builder.pushInt16(-12345, true);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="pushInt32"><span class="type-signature"></span>pushInt32<span class="signature">(numberValue, littleEndian)</span><span class="type-signature"> &rarr; {<a href="BufferBuilder.html">BufferBuilder</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Appends the specified number as a signed 32-bit integer to this builder.</p>
+
+<p>Increases the length of the builder by 4.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>numberValue</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A number between -2147483648 and 2147483647.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>littleEndian</code></td>
+            
+            
+            <td class="type">
+            Boolean=false
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">TRUE for little endian byte order; FALSE for big endian. Defaults to FALSE.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferBuilder.js, line 390</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    Self.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">BufferBuilder</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified value is not a 32-bit signed integer.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>builder.pushInt32(-123456789);
+builder.pushInt32(123456789, true);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="pushInt8"><span class="type-signature"></span>pushInt8<span class="signature">(numberValue)</span><span class="type-signature"> &rarr; {<a href="BufferBuilder.html">BufferBuilder</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Appends the specified number as a signed 8-bit integer to this builder.</p>
+
+<p>Increases the length of the builder by 1.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>numberValue</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A number between -128 and 127.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferBuilder.js, line 330</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    Self.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">BufferBuilder</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified value is not an 8-bit signed integer.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>builder.pushInt8(-100);
+builder.pushInt8(10, true);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="pushString"><span class="type-signature"></span>pushString<span class="signature">(stringValue, encoding)</span><span class="type-signature"> &rarr; {<a href="BufferBuilder.html">BufferBuilder</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Appends the specified string in the specified encoding to this builder.</p>
+
+<p>Increases the length of the builder by the byte length of the specified
+string. Byte length is calculated using <code>Buffer.byteLength()</code> function.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>stringValue</code></td>
+            
+            
+            <td class="type">
+            String
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A string value in the specified encoding.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>encoding</code></td>
+            
+            
+            <td class="type">
+            String=utf8
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">An encoding of the specified string value. Defaults to `utf8`.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferBuilder.js, line 273</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    Self.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">BufferBuilder</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified value is not a string.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>builder.pushString('Hęłłó!');
+builder.pushString('Hello!', 'ascii');</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="pushUInt16"><span class="type-signature"></span>pushUInt16<span class="signature">(numberValue, littleEndian)</span><span class="type-signature"> &rarr; {<a href="BufferBuilder.html">BufferBuilder</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Appends the specified number as an unsigned 16-bit integer to this builder.</p>
+
+<p>Increases the length of the builder by 2.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>numberValue</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A number between 0 and 65535.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>littleEndian</code></td>
+            
+            
+            <td class="type">
+            Boolean=false
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">TRUE for little endian byte order; FALSE for big endian. Defaults to FALSE.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferBuilder.js, line 449</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    Self.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">BufferBuilder</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified value is not a 16-bit unsigned integer.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>builder.pushUInt16(256);
+builder.pushUInt16(1, true);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="pushUInt32"><span class="type-signature"></span>pushUInt32<span class="signature">(numberValue, littleEndian)</span><span class="type-signature"> &rarr; {<a href="BufferBuilder.html">BufferBuilder</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Appends the specified number as an unsigned 32-bit integer to this builder.</p>
+
+<p>Increases the length of the builder by 4.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>numberValue</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A number between 0 and 4294967295.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>littleEndian</code></td>
+            
+            
+            <td class="type">
+            Boolean=false
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">TRUE for little endian byte order; FALSE for big endian. Defaults to FALSE.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferBuilder.js, line 480</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    Self.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">BufferBuilder</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified value is not a 32-bit unsigned integer.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>builder.pushUInt32(4000111222);
+builder.pushUInt32(4000111222, true);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="pushUInt8"><span class="type-signature"></span>pushUInt8<span class="signature">(numberValue)</span><span class="type-signature"> &rarr; {<a href="BufferBuilder.html">BufferBuilder</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Appends the specified number as an unsigned 8-bit integer to this builder.</p>
+
+<p>Increases the length of the builder by 1.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>numberValue</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A number between 0 and 255.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferBuilder.js, line 420</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    Self.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">BufferBuilder</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified value is not an 8-bit unsigned integer.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>builder.pushUInt8(255);
+builder.pushUInt8(66, true);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="pushZeroString"><span class="type-signature"></span>pushZeroString<span class="signature">(stringValue, encoding)</span><span class="type-signature"> &rarr; {<a href="BufferBuilder.html">BufferBuilder</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Appends the specified string followed by NULL character (<code>\0</code>)
+to this builder.</p>
+
+<p>Increases the length of the builder by the byte length of the specified
+string value plus 1. Byte length is calculated using <code>Buffer.byteLength()</code>
+function.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>stringValue</code></td>
+            
+            
+            <td class="type">
+            String
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A string value in the specified encoding.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>encoding</code></td>
+            
+            
+            <td class="type">
+            String=utf8
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">An encoding of the specified string value. Defaults to `utf8`.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferBuilder.js, line 313</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    Self.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">BufferBuilder</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified value is not a string.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>builder.pushZeroString('Hęłłó!');
+builder.pushZeroString('Hello!', 'ascii');</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="toBuffer"><span class="type-signature"></span>toBuffer<span class="signature">()</span><span class="type-signature"> &rarr; {Buffer}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Returns a new Buffer with all data pushed to this builder.</p>
+
+<p>The new Buffer will have the same length as the builder.</p>
+    </p>
+    
+    
+    
+    
+    
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferBuilder.js, line 35</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    An instance of Buffer filled with all bytes pushed to this builder.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Buffer</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var buffer = builder.toBuffer();</code></pre>
+
+
+</dd>
+</dl>
+            
+        
+        
+        
+        
+        
+    </article>
+    
+    </section>  
+    
+</div>
+
+<nav>
+    <h3>Classes</h3><ul><li><a href="BufferBuilder.html">BufferBuilder</a></li><li><a href="BufferQueueReader.html">BufferQueueReader</a></li><li><a href="BufferReader.html">BufferReader</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/micmath/jsdoc">JSDoc 3</a> on Tue Nov 22 2011 22:17:45 GMT+0100 (CET)
+</footer>
+
+<script> sh_highlightDocument(); </script>
+</body>
+</html>

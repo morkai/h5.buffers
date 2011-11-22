@@ -1,0 +1,5039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>JSDoc: Class: BufferReader</title>
+	
+	<script src="http://shjs.sourceforge.net/sh_main.min.js"> </script>
+    <script src="http://shjs.sourceforge.net/lang/sh_javascript.min.js"> </script>
+    
+    <link type="text/css" rel="stylesheet" href="styles/node-dark.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Class: BufferReader</h1>
+    
+    
+    
+    <section>
+     
+    <header>
+        <h2>BufferReader</h2>
+        
+    </header>  
+    
+    <article>
+        <div class="container-overview">
+        <dt>
+    <h4 class="name" id="BufferReader"><span class="type-signature"></span>new BufferReader<span class="signature">(buffer)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>A class providing extended functionality for reading <code>Buffer</code> instances.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>buffer</code></td>
+            
+            
+            <td class="type">
+            Buffer
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A buffer to wrap.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>length</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The remaining length of the reader.</td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 24</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified `buffer` is not a `Buffer`.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var buffer = new Buffer(256);var reader = new BufferReader(buffer);console.log('int16=', reader.shiftInt16());console.log('uint32=', reader.shiftUInt32());console.log('bits=', reader.readBits(0, 12));reader.skip(2);console.log('double=', reader.shiftDouble());</code></pre>
+
+
+</dd>
+
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+            
+            <h3 class="subsection-title">Methods</h3>
+            
+            <dl><dt>
+    <h4 class="name" id="copy"><span class="type-signature"></span>copy<span class="signature">(targetBuffer, targetStart, sourceStart, sourceEnd)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Copies bytes from the reader to the specified target buffer.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>targetBuffer</code></td>
+            
+            
+            <td class="type">
+            Buffer
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A buffer to copy to.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>targetStart</code></td>
+            
+            
+            <td class="type">
+            Number=0
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A position at which writing to the buffer should begin. Defaults to 0 (the beginning).</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>sourceStart</code></td>
+            
+            
+            <td class="type">
+            Number=0
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A position from which writing from the reader should begin. Defaults to 0 (the beginning).</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>sourceEnd</code></td>
+            
+            
+            <td class="type">
+            Number=this.length
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A position at which writing from the reader should end. Defaults to the end (the reader's length).</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 130</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A number of bytes written.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Number</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    <ul><li>
+<div class="param-desc">
+    If the specified target buffer is not an instance of Buffer.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+</li><li>
+<div class="param-desc">
+    If the specified target start index is not a number between 0 and the target buffer's length.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+</li><li>
+<div class="param-desc">
+    If the specified source start index is not a number between 0 and the reader's length (exclusive).
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+</li><li>
+<div class="param-desc">
+    If the specified source end index is not a number between 0 (exclusive) and the reader's length.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+</li><li>
+<div class="param-desc">
+    If the specified source start index is greater than or equal to the source end index.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+</li></ul>
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var buffer = new Buffer(10);reader.copy(buffer, 0);reader.copy(buffer, 5, 4, 9);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="indexOf"><span class="type-signature"></span>indexOf<span class="signature">(searchElement, fromIndex)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Returns a position of the next occurence of the specified byte afterthe specified starting index.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>searchElement</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A byte value to search for.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>fromIndex</code></td>
+            
+            
+            <td class="type">
+            Number=0
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A starting index. Defaults to 0 (the beginning).</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 79</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A position of the found element (starting at 0) or -1 if the search element was not found.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Number</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    <ul><li>
+<div class="param-desc">
+    If the search element is not a number between 0x00 and 0xFF.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+</li><li>
+<div class="param-desc">
+    If the starting index is not a number between 0 and the reader's length.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+</li></ul>
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var index = reader.indexOf(0xAB, 10);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="readBits"><span class="type-signature"></span>readBits<span class="signature">(offset, count, bitOffset)</span><span class="type-signature"> &rarr; {Array.<Boolean>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Returns an array of bits (boolean values) starting at the specified offset.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>offset</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A starting index. Must be between 0 and the reader's length minus 1.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>count</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A number of bits to read. Must be between 1 and the reader's length multiplied by 8 minus the starting index.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>bitOffset</code></td>
+            
+            
+            <td class="type">
+            Boolean
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">TRUE, if the specified offset is a number of bits; Defaults to FALSE (offset is expressed in bytes).</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 513</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    An array of bits.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Array.&lt;Boolean></span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified count is not a number between 1 and the reader's length multiplied by 8 minus the starting index.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var bitsArray = reader.readBits(5, 13);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="readBuffer"><span class="type-signature"></span>readBuffer<span class="signature">(offset, count)</span><span class="type-signature"> &rarr; {Buffer}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Returns the specified number of bytes as an instance of Buffer starting from the specified position.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>offset</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A starting index. Must be between 0 and the reader's length minus the specified count.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>count</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A number of bytes to read. Must be between 1 and the reader's length minus the offset.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 614</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A Buffer of bytes.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Buffer</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    <ul><li>
+<div class="param-desc">
+    If the specified offset exceeds the reader's boundries.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+</li><li>
+<div class="param-desc">
+    If the specified count is not a number between 1 and the reader's length minus the offset.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+</li></ul>
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var buffer = reader.readBuffer(5, 10);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="readByte"><span class="type-signature"></span>readByte<span class="signature">(offset)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Returns a byte at the specified position.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>offset</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A starting index. Must be between 0 and the reader's length minus 1.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 528</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A number between 0x00 and 0xFF.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Number</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the reader is empty.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var byteValue = reader.readByte(1);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="readBytes"><span class="type-signature"></span>readBytes<span class="signature">(offset, count)</span><span class="type-signature"> &rarr; {Array.<Number>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Returns the specified number of bytes starting from the specified position.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>offset</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A starting index. Must be between 0 and the reader's length minus the specified count.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>count</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A number of bytes to read. Must be between 1 and the reader's length minus the offset.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 567</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    An array of bytes.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Array.&lt;Number></span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    <ul><li>
+<div class="param-desc">
+    If the specified offset exceeds the reader's boundries.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+</li><li>
+<div class="param-desc">
+    If the specified count is not a number between 1 and the reader's length minus the offset.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+</li></ul>
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var bytesArray = reader.readBytes(0, 6);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="readChar"><span class="type-signature"></span>readChar<span class="signature">(offset)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Returns an ASCII character at the specified position.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>offset</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A starting index. Must be between 0 and the reader's length minus 1.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 551</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    An ASCII character.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">String</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified offset exceeds the reader's boundries.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var charValue = reader.readChar(4);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="readDouble"><span class="type-signature"></span>readDouble<span class="signature">(offset, littleEndian)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Returns a signed 64 bit floating-point number as defined in IEEE 754.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>offset</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A starting index. Must be between 0 and the reader's length minus 8.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>littleEndian</code></td>
+            
+            
+            <td class="type">
+            Boolean=false
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Whether to use little endian instead of big endian.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 792</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A 64 bit floating-point number.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Number</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified offset exceeds the reader's boundries.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var doubleBE = reader.readDouble(0);var doubleLE = reader.readDouble(8, true);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="readFloat"><span class="type-signature"></span>readFloat<span class="signature">(offset, littleEndian)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Returns a signed 32 bit floating-point number as defined in IEEE 754.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>offset</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A starting index. Must be between 0 and the reader's length minus 4.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>littleEndian</code></td>
+            
+            
+            <td class="type">
+            Boolean=false
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Whether to use little endian instead of big endian.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 774</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A 32 bit floating-point number.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Number</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified offset exceeds the reader's boundries.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var floatBE = reader.readFloat(0, );var floatLE = reader.readFloat(4, true);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="readInt16"><span class="type-signature"></span>readInt16<span class="signature">(offset, littleEndian)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Returns a signed 16 bit integer starting from the specified position.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>offset</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A starting index. Must be between 0 and the reader's length minus 2.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>littleEndian</code></td>
+            
+            
+            <td class="type">
+            Boolean=false
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Whether to use little endian instead of big endian.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 688</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A number between -32768 and 32767.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Number</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified offset exceeds the reader's boundries.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var int16BE = reader.readInt16(0);var int16LE = reader.readInt16(2, true);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="readInt32"><span class="type-signature"></span>readInt32<span class="signature">(offset, littleEndian)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Returns a signed 32 bit integer starting from the specified position.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>offset</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A starting index. Must be between 0 and the reader's length minus 4.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>littleEndian</code></td>
+            
+            
+            <td class="type">
+            Boolean=false
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Whether to use little endian instead of big endian.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 706</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A number between -2147483648 and 2147483647.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Number</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified offset exceeds the reader's boundries.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var int32BE = reader.readInt32(0);var int32LE = reader.readInt32(4, true);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="readInt8"><span class="type-signature"></span>readInt8<span class="signature">(offset)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Returns a signed 8 bit integer at the specified position.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>offset</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A starting index. Must be between 0 and the reader's length minus 1.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 672</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A number between -128 and 127.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Number</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    <ul><li>
+<div class="param-desc">
+    If the specified offset exceeds the reader's boundries.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+</li><li>
+<div class="param-desc">
+    If the reader is empty.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+</li></ul>
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var int8 = reader.readInt8(5);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="readString"><span class="type-signature"></span>readString<span class="signature">(offset, length, encoding)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Returns the specified number of bytes as a string withthe specified encoding.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>offset</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A starting index. Must be between 0 and the reader's length minus the specified length.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>length</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A number of bytes to read. Must be between 1 and the reader's length minus the offset.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>encoding</code></td>
+            
+            
+            <td class="type">
+            String=utf8
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">An encoding of the string. Defaults to `utf8`.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 633</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A string of the specified length.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">String</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    <ul><li>
+<div class="param-desc">
+    If the specified offset exceeds the reader's boundries.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+</li><li>
+<div class="param-desc">
+    If the specified length is not a number between 1 and the reader's length.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+</li><li>
+<div class="param-desc">
+    If the specified encoding is not supported.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+</li></ul>
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var stringValue = reader.readString(1, 12, 'ascii');</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="readUInt16"><span class="type-signature"></span>readUInt16<span class="signature">(offset, littleEndian)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Returns an unsigned 16 bit integer starting from the specified position.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>offset</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A starting index. Must be between 0 and the reader's length minus 2.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>littleEndian</code></td>
+            
+            
+            <td class="type">
+            Boolean=false
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Whether to use little endian instead of big endian.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 738</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A number between 0 and 65535.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Number</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified offset exceeds the reader's boundries.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var uint16BE = reader.readUInt16(0);var uint16LE = reader.readUInt16(2, true);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="readUInt32"><span class="type-signature"></span>readUInt32<span class="signature">(offset, littleEndian)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Returns an unsigned 32 bit integer starting from the specified position.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>offset</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A starting index. Must be between 0 and the reader's length minus 4.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>littleEndian</code></td>
+            
+            
+            <td class="type">
+            Boolean=false
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Whether to use little endian instead of big endian.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 756</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A number between 0 and 4294967295.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Number</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified offset exceeds the reader's boundries.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var uint32BE = reader.readUInt32(0);var uint32LE = reader.readUInt32(4, true);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="readUInt8"><span class="type-signature"></span>readUInt8<span class="signature">(offset)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Returns an unsigned 8 bit integer at the specified position.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>offset</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A starting index. Must be between 0 and the reader's length minus 1.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 722</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A number between 0 and 255.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Number</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified offset exceeds the reader's boundries.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var uint8 = reader.readUInt8(0);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="readZeroString"><span class="type-signature"></span>readZeroString<span class="signature">(offset, encoding)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Returns a string from the specified offset until the firstoccurence of the NULL character (\0).</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>offset</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A starting index. Must be between 0 and the reader's length.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>encoding</code></td>
+            
+            
+            <td class="type">
+            String=utf8
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">An encoding of the string. Defaults to `utf8`.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 650</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A string constructed from the read bytes or empty string if NULL character could not be found.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">String</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    <ul><li>
+<div class="param-desc">
+    If the specified offset exceeds the reader's boundries.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+</li><li>
+<div class="param-desc">
+    If the specified encoding is not supported.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+</li></ul>
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var stringValue = reader.readZeroString(0, 'utf8');</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="shiftBits"><span class="type-signature"></span>shiftBits<span class="signature">(count)</span><span class="type-signature"> &rarr; {Array.<Boolean>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Shifts an array of bits (boolean values) from the reader.Decreases the reader's length by a number of bytes that is needed toextract the specified number of bits(e.g. 4, 8 bits=1 byte, 9, 13, 16 bits=2 bytes etc.).</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>count</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A number of bits to shift. Must be between 1 and the reader's length multiplied by 8.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 198</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    An array of bits.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Array.&lt;Boolean></span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified count is not a number between 1 and the reader's length multiplied by 8.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var bitsArray = reader.shiftBits(13);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="shiftBuffer"><span class="type-signature"></span>shiftBuffer<span class="signature">(count)</span><span class="type-signature"> &rarr; {Buffer}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Shifts the specified number of bytes as an instance of Buffer.Decreases the reader's length by the specified byte count.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>count</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A number of bytes to shift. Must be between 1 and the reader's length.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 286</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A buffer of the specified size.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Buffer</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified count is not a number between 1 and the reader's length.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var buffer = reader.shiftBuffer(10);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="shiftByte"><span class="type-signature"></span>shiftByte<span class="signature">()</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Shifts a byte from the reader.Decreases the reader's length by 1.</p>
+    </p>
+    
+    
+    
+    
+    
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 213</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A number between 0x00 and 0xFF.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Number</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the reader is empty.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var byteValue = reader.shiftByte();</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="shiftBytes"><span class="type-signature"></span>shiftBytes<span class="signature">(count)</span><span class="type-signature"> &rarr; {Array.<Number>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Shifts the specified number of bytes from the reader.Decreases the reader's length by the specified byte count.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>count</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A number of bytes to shift. Must be between 1 and the reader's length.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 251</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    An array of bytes.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Array.&lt;Number></span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified count is not a number between 1 and the reader's length.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var bytesArray = reader.shiftBytes(6);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="shiftChar"><span class="type-signature"></span>shiftChar<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Shifts an ASCII character from the reader.Decreases the reader's length by 1.</p>
+    </p>
+    
+    
+    
+    
+    
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 235</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    An ASCII character.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">String</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the reader is empty.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var charValue = reader.shiftChar();</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="shiftDouble"><span class="type-signature"></span>shiftDouble<span class="signature">(littleEndian)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Shifts a signed 64 bit floating-point number as defined in IEEE 754.Decreases the reader's length by eight bytes.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>littleEndian</code></td>
+            
+            
+            <td class="type">
+            Boolean=false
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Whether to use little endian instead of big endian.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 493</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A 64 bit floating-point number.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Number</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the reader's length is less than 8.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var doubleBE = reader.shiftDouble();var doubleLE = reader.shiftDouble(true);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="shiftFloat"><span class="type-signature"></span>shiftFloat<span class="signature">(littleEndian)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Shifts a signed 32 bit floating-point number as defined in IEEE 754.Decreases the reader's length by four bytes.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>littleEndian</code></td>
+            
+            
+            <td class="type">
+            Boolean=false
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Whether to use little endian instead of big endian.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 472</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A 32 bit floating-point number.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Number</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the reader's length is less than 4.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var floatBE = reader.shiftFloat();var floatLE = reader.shiftFloat(true);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="shiftInt16"><span class="type-signature"></span>shiftInt16<span class="signature">(littleEndian)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Shifts a signed 16 bit integer.Decreases the reader's length by two bytes.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>littleEndian</code></td>
+            
+            
+            <td class="type">
+            Boolean=false
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Whether to use little endian instead of big endian.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 369</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A number between -32768 and 32767.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Number</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the reader's length is less than 2.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var int16BE = reader.shiftInt16();var int16LE = reader.shiftInt16(true);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="shiftInt32"><span class="type-signature"></span>shiftInt32<span class="signature">(littleEndian)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Shifts a signed 32 bit integer.Decreases the reader's length by four bytes.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>littleEndian</code></td>
+            
+            
+            <td class="type">
+            Boolean=false
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Whether to use little endian instead of big endian.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 390</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A number between -2147483648 and 2147483647.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Number</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the reader's length is less than 4.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var int32BE = reader.shiftInt32();var int32LE = reader.shiftInt32(true);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="shiftInt8"><span class="type-signature"></span>shiftInt8<span class="signature">()</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Shifts a signed 8 bit integer.Decreases the reader's length by one byte.</p>
+    </p>
+    
+    
+    
+    
+    
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 348</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A number between -128 and 127.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Number</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the reader is empty.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var int8 = reader.shiftInt8();</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="shiftString"><span class="type-signature"></span>shiftString<span class="signature">(length, encoding)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Shifts the specified number of bytes as a string withthe specified encoding.Decreases the reader's length by the specified byte count.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>length</code></td>
+            
+            
+            <td class="type">
+            Number
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A number of bytes to shift. Must be between 1 and the reader's length.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>encoding</code></td>
+            
+            
+            <td class="type">
+            String=utf8
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">An encoding of the string. Defaults to `utf8`.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 305</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A string of the specified length.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">String</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    <ul><li>
+<div class="param-desc">
+    If the specified length is not a number between 1 and the reader's length.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+</li><li>
+<div class="param-desc">
+    If the specified encoding is not supported.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+</li></ul>
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var stringValue = reader.shiftString(12, 'ascii');</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="shiftUInt16"><span class="type-signature"></span>shiftUInt16<span class="signature">(littleEndian)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Shifts an unsigned 16 bit integer.Decreases the reader's length by two bytes.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>littleEndian</code></td>
+            
+            
+            <td class="type">
+            Boolean=false
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Whether to use little endian instead of big endian.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 430</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A number between 0 and 65535.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Number</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the reader's length is less than 2.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var uint16BE = reader.shiftUInt16();var uint16LE = reader.shiftUInt16(true);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="shiftUInt32"><span class="type-signature"></span>shiftUInt32<span class="signature">(littleEndian)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Shifts an unsigned 32 bit integer.Decreases the reader's length by four bytes.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>littleEndian</code></td>
+            
+            
+            <td class="type">
+            Boolean=false
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Whether to use little endian instead of big endian.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 451</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A number between 0 and 4294967295.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Number</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the reader's length is less than 4.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var uint32BE = reader.shiftUInt32();var uint32LE = reader.shiftUInt32(true);</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="shiftUInt8"><span class="type-signature"></span>shiftUInt8<span class="signature">()</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Shifts an unsigned 8 bit integer.Decreases the reader's length by one byte.</p>
+    </p>
+    
+    
+    
+    
+    
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 409</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A number between 0 and 255.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Number</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the reader is empty.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var uint8 = reader.shiftUInt8();</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="shiftZeroString"><span class="type-signature"></span>shiftZeroString<span class="signature">(encoding)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Shifts a string from the beginning of the reader until the firstoccurence of the NULL character (\0).Decreases the reader's length by the returned string's length plus one.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>encoding</code></td>
+            
+            
+            <td class="type">
+            String=utf8
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">An encoding of the string. Defaults to `utf8`.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 322</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    <h5>Returns:</h5>
+    
+<div class="param-desc">
+    A string constructed from the shifted bytes or empty string if NULL character could not be found.
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">String</span> 
+		
+	</dd>
+</dl>
+
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the specified encoding is not supported.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>var stringValue = reader.shiftZeroString('utf8');</code></pre>
+
+
+</dd>
+<dt>
+    <h4 class="name" id="skip"><span class="type-signature"></span>skip<span class="signature">(count)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <p class="description">
+        <p>Skips the specified number of bytes.If the byte count was not specified or it's value is greater than the lengthof the reader, skips all the bytes to the end.</p>
+    </p>
+    
+    
+    
+    
+    <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>count</code></td>
+            
+            
+            <td class="type">
+            Number=this.length
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A number of bytes to skip. Defaults to the reader's length.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    <dl class="details">
+    
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/BufferReader.js, line 47</li></ul></dd>
+	
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    <h5>Throws:</h5>
+    
+<div class="param-desc">
+    If the count is not a number greater than or equal to 0.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Error</span> 
+		
+	</dd>
+</dl>
+
+    
+    <h5>Example</h5>
+    <pre class="sh_javascript"><code>reader.skip(10);</code></pre>
+
+
+</dd>
+</dl>
+            
+        
+        
+        
+        
+        
+    </article>
+    
+    </section>  
+    
+</div>
+
+<nav>
+    <h3>Classes</h3><ul><li><a href="BufferBuilder.html">BufferBuilder</a></li><li><a href="BufferQueueReader.html">BufferQueueReader</a></li><li><a href="BufferReader.html">BufferReader</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/micmath/jsdoc">JSDoc 3</a> on Tue Nov 22 2011 22:17:46 GMT+0100 (CET)
+</footer>
+
+<script> sh_highlightDocument(); </script>
+</body>
+</html>
