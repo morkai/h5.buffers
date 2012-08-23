@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/morkai/h5.buffers.png)](http://travis-ci.org/morkai/h5.buffers)
 # h5.buffers
 
 A set of classes to simplify and extend reading from and writing to
