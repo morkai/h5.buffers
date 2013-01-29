@@ -5,7 +5,9 @@ node.js Buffers.
 
 ## How to install
 
-    $ npm install h5.buffers
+```
+npm install h5.buffers
+```
 
 ## How to use
 
@@ -18,9 +20,9 @@ var buffers = require('h5.buffers');
 Instantiate any class and look up its API:
 
 ```javascript
-    var reader = new buffers.BufferReader(new Buffer(256));
-    var builder = new buffers.BufferBuilder();
-    var queueReader = new buffers.BufferQueueReader();
+var reader = new buffers.BufferReader(new Buffer(256));
+var builder = new buffers.BufferBuilder();
+var queueReader = new buffers.BufferQueueReader();
 ```
 
 ## API
@@ -40,13 +42,17 @@ directories.
 To run tests, you'll need
 [jasmine-node](https://github.com/mhevery/jasmine-node).
 
-    $ npm install -g jasmine-node
+```
+npm install -g jasmine-node
+```
 
 Run tests by executing the following command:
 
-    $ npm test h5.buffers
+```
+npm test h5.buffers
+```
 
 ## License
 
-See [License.md](https://raw.github.com/morkai/h5.buffers/master/License.md)
-(it's MIT).
+This project is released under the
+[MIT License](https://raw.github.com/morkai/oriental-node-plumber/master/license.md).
