@@ -1,4 +1,9 @@
 .DS_Store
 .git*
 .idea/
+doc/
+example/
 lib-cov/
+node_modules/
+spec/
+.travis.yml

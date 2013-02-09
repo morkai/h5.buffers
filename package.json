@@ -4,28 +4,23 @@
   "description": "A set of classes to simplify and extend reading from and writing to node.js Buffers.",
   "homepage": "https://github.com/morkai/h5.buffers",
   "keywords": ["h5", "buffer", "reader", "builder", "queue", "binary"],
-  "author":
-  {
+  "author": {
     "name": "Łukasz Walukiewicz",
     "email": "lukasz@walukiewicz.eu",
     "url": "http://lukasz.walukiewicz.eu/"
   },
   "bugs": "https://github.com/morkai/h5.buffers/issues",
-  "repository":
-  {
+  "repository": {
     "type": "git",
     "url":  "http://github.com/morkai/h5.buffers.git"
   },
   "engine": ["node >=0.5.5"],
-  "directories":
-  {
-    "doc": "./doc/api",
+  "directories": {
     "lib": "./lib"
   },
   "main": "./lib/index",
-  "devDependencies":
-  {
-    "jasmine-node": ">=1.0.12"
+  "devDependencies": {
+    "jasmine-node": "1.2.x"
   },
   "scripts": {
     "test": "jasmine-node spec/",
