@@ -3,13 +3,15 @@
 A set of classes to simplify and extend reading from and writing to
 node.js Buffers.
 
-## How to install
+[![Build Status](https://travis-ci.org/morkai/h5.step.png)](https://travis-ci.org/morkai/h5.step)
+
+## Installation
 
 ```
 npm install h5.buffers
 ```
 
-## How to use
+## Usage
 
 Require the module:
 
@@ -39,17 +41,23 @@ directories.
 
 ## Tests
 
-To run tests, you'll need
-[jasmine-node](https://github.com/mhevery/jasmine-node).
+To run the tests, clone the repository:
 
 ```
-npm install -g jasmine-node
+git clone git://github.com/morkai/h5.buffers.git
 ```
 
-Run tests by executing the following command:
+Install the development dependencies:
 
 ```
-npm test h5.buffers
+cd h5.buffers/
+npm install
+```
+
+And execute the `test` script:
+
+```
+npm test
 ```
 
 ## License
