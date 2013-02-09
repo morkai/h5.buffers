@@ -3,7 +3,7 @@
 A set of classes to simplify and extend reading from and writing to
 node.js Buffers.
 
-[![Build Status](https://travis-ci.org/morkai/h5.step.png)](https://travis-ci.org/morkai/h5.step)
+[![Build Status](https://travis-ci.org/morkai/h5.buffers.png)](https://travis-ci.org/morkai/h5.buffers)
 
 ## Installation
 
