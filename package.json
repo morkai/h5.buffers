@@ -2,8 +2,9 @@
   "name": "h5.buffers",
   "version": "0.1.0",
   "description": "A set of classes to simplify and extend reading from and writing to node.js Buffers.",
-  "homepage": "https://github.com/morkai/h5.buffers",
   "keywords": ["h5", "buffer", "reader", "builder", "queue", "binary"],
+  "license": "MIT",
+  "homepage": "https://github.com/morkai/h5.buffers",
   "author": {
     "name": "Łukasz Walukiewicz",
     "email": "lukasz@walukiewicz.eu",
@@ -12,18 +13,20 @@
   "bugs": "https://github.com/morkai/h5.buffers/issues",
   "repository": {
     "type": "git",
-    "url":  "http://github.com/morkai/h5.buffers.git"
+    "url": "http://github.com/morkai/h5.buffers.git"
   },
-  "engine": ["node >=0.5.5"],
-  "directories": {
-    "lib": "./lib"
-  },
+  "engine": ["node >=0.8"],
   "main": "./lib/index",
   "devDependencies": {
-    "jasmine-node": "1.2.x"
+    "grunt": "0.4.x",
+    "grunt-cli": "0.1.x",
+    "grunt-contrib-clean": "git://github.com/gruntjs/grunt-contrib-clean.git#a6b2940430",
+    "grunt-contrib-jshint": "0.1.x",
+    "grunt-jasmine-node": "0.0.x",
+    "grunt-istanbul": "git://github.com/morkai/grunt-istanbul.git#multiple-reporters",
+    "grunt-env": "git://github.com/onehealth/grunt-env.git#0.4.0"
   },
   "scripts": {
-    "test": "jasmine-node spec/",
-    "jsdoc": "jsdoc -d doc/ lib/"
+    "test": "grunt"
   }
 }

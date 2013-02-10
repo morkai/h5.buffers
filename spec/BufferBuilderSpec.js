@@ -1,4 +1,9 @@
-var BufferBuilder = require('../lib/BufferBuilder');
+/*jshint maxlen:999,maxstatements:999*/
+/*global describe:false,it:false,expect:false,beforeEach:false*/
+
+'use strict';
+
+var BufferBuilder = require(process.env.LIB_FOR_TESTS_DIR || '../lib').BufferBuilder;
 
 describe("BufferBuilder", function()
 {

@@ -1,4 +1,9 @@
-var BufferQueueReader = require('../lib/BufferQueueReader');
+/*jshint maxlen:999,maxstatements:999*/
+/*global describe:false,it:false,expect:false*/
+
+'use strict';
+
+var BufferQueueReader = require(process.env.LIB_FOR_TESTS_DIR || '../lib').BufferQueueReader;
 
 describe("BufferQueueReader", function()
 {
@@ -1907,7 +1912,7 @@ describe("BufferQueueReader", function()
 
     it("should read starting from the specified position", function()
     {
-      var reader = new BufferQueueReader(new Buffer('omg hi 2 u\0 2'));
+      var reader = new BufferQueueReader(new Buffer('omg hi 2 u\u0000 2'));
 
       expect(reader.readZeroString(4)).toEqual('hi 2 u');
     });

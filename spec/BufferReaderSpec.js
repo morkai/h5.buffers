@@ -1,4 +1,9 @@
-var BufferReader = require('../lib/BufferReader');
+/*jshint maxlen:999,maxstatements:999*/
+/*global describe:false,it:false,expect:false*/
+
+'use strict';
+
+var BufferReader = require(process.env.LIB_FOR_TESTS_DIR || '../lib').BufferReader;
 
 describe("BufferReader", function()
 {
@@ -1724,14 +1729,14 @@ describe("BufferReader", function()
 
     it("should return an empty string if NULL character is at the specified offset", function()
     {
-      var reader = new BufferReader(new Buffer('o\0mghi2u'));
+      var reader = new BufferReader(new Buffer('o\u0000mghi2u'));
 
       expect(reader.readZeroString(1)).toEqual('');
     });
 
     it("should read starting from the specified position", function()
     {
-      var reader = new BufferReader(new Buffer('omg hi 2 u\0 2'));
+      var reader = new BufferReader(new Buffer('omg hi 2 u\u0000 2'));
 
       expect(reader.readZeroString(4)).toEqual('hi 2 u');
     });
