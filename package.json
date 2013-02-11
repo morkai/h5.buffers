@@ -23,7 +23,7 @@
     "grunt-contrib-clean": "git://github.com/gruntjs/grunt-contrib-clean.git#a6b2940430",
     "grunt-contrib-jshint": "0.1.x",
     "grunt-jasmine-node": "0.0.x",
-    "grunt-istanbul": "git://github.com/morkai/grunt-istanbul.git#multiple-reporters",
+    "grunt-istanbul": "0.1.x",
     "grunt-env": "git://github.com/onehealth/grunt-env.git#0.4.0"
   },
   "scripts": {
