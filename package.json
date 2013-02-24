@@ -18,13 +18,13 @@
   "engine": ["node >=0.8"],
   "main": "./lib/index",
   "devDependencies": {
-    "grunt": "0.4.x",
-    "grunt-cli": "0.1.x",
-    "grunt-contrib-clean": "git://github.com/gruntjs/grunt-contrib-clean.git#a6b2940430",
-    "grunt-contrib-jshint": "0.1.x",
-    "grunt-jasmine-node": "0.0.x",
-    "grunt-istanbul": "0.1.x",
-    "grunt-env": "git://github.com/onehealth/grunt-env.git#0.4.0"
+    "grunt": "~0.4.0",
+    "grunt-cli": "~0.1.6",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-jasmine-node": "~0.0.6",
+    "grunt-istanbul": "~0.1.0",
+    "grunt-env": "~0.2.1"
   },
   "scripts": {
     "test": "grunt"
