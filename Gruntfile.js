@@ -32,25 +32,7 @@ module.exports = function(grunt)
         './test/*.js'
       ],
       options: {
-        curly: true,
-        eqeqeq: true,
-        forin: true,
-        immed: true,
-        newcap: true,
-        noarg: true,
-        noempty: true,
-        undef: true,
-        unused: true,
-        indent: 2,
-        maxdepth: 4,
-        maxparams: 4,
-        maxstatements: 20,
-        maxlen: 80,
-        es5: true,
-        laxbreak: true,
-        node: true,
-        globalstrict: true,
-        white: false
+        jshintrc: '.jshintrc'
       }
     },
     jasmine_node: {
