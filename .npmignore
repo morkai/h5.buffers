@@ -4,6 +4,7 @@ doc/
 example/
 node_modules/
 spec/
+.jshintrc
 .gitignore
 .npmignore
 .travis.yml
