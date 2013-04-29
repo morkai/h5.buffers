@@ -1,6 +1,6 @@
 {
   "name": "h5.buffers",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A set of classes to simplify and extend reading from and writing to node.js Buffers.",
   "keywords": ["h5", "buffer", "reader", "builder", "queue", "binary"],
   "license": "MIT",
