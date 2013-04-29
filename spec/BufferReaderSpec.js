@@ -600,7 +600,7 @@ describe("BufferReader", function()
     {
       var reader = new BufferReader(new Buffer('ómgh€u', 'ascii'));
 
-      expect(reader.shiftString(6, 'ascii')).toEqual('\uFFFDmgh\uFFFDu');
+      expect(reader.shiftString(6, 'ascii')).toEqual('smgh,u');
     });
 
     it("should decrease the reader's length by the shifted string's length", function()
@@ -1654,7 +1654,7 @@ describe("BufferReader", function()
     {
       var reader = new BufferReader(new Buffer('ómgh€u', 'ascii'));
 
-      expect(reader.readString(0, 6, 'ascii')).toEqual('\uFFFDmgh\uFFFDu');
+      expect(reader.readString(0, 6, 'ascii')).toEqual('smgh,u');
     });
 
     it("should not decrease the reader's length", function()

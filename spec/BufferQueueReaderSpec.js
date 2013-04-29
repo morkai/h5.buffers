@@ -726,7 +726,7 @@ describe("BufferQueueReader", function()
     {
       var reader = new BufferQueueReader(new Buffer('ómgh€u', 'ascii'));
 
-      expect(reader.shiftString(6, 'ascii')).toEqual('\uFFFDmgh\uFFFDu');
+      expect(reader.shiftString(6, 'ascii')).toEqual('smgh,u');
     });
 
     it("should work with multiple buffers", function()
@@ -1816,7 +1816,7 @@ describe("BufferQueueReader", function()
     {
       var reader = new BufferQueueReader(new Buffer('ómgh€u', 'ascii'));
 
-      expect(reader.readString(0, 6, 'ascii')).toEqual('\uFFFDmgh\uFFFDu');
+      expect(reader.readString(0, 6, 'ascii')).toEqual('smgh,u');
     });
 
     it("should work with multiple buffers", function()
